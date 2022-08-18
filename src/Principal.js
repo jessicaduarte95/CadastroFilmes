@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import "./App.css";
 import Astronalta from './img/astronalta.png';
+import { Link } from 'react-router-dom';
 
 const containerStyle = {
   backgroundImage: 'linear-gradient(90deg, #800080 0%, #C71585 100%)'
@@ -44,7 +45,7 @@ const Teste = () => {
   console.log("Testando Botão")
 }
 
-function App() {
+function Principal() {
   return (
     <Grid container style={containerStyle}>
 
@@ -73,10 +74,12 @@ function App() {
         >
         Caso tenha interesse em cadastrar um filme
         clique no botão abaixo!
-        <button style={buttonStyle} onClick={() => Teste()}>Cadastrar</button>
+        <Link to='/cadastrar' style={{height:"0px"}}>
+          <button  style={buttonStyle}>Cadastrar</button>
+        </Link>
       </Grid>
     </Grid>
   );
 }
 
-export default App;
+export default Principal;
