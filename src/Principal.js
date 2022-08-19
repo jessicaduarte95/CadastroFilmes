@@ -41,9 +41,6 @@ const buttonStyle = {
   backgroundColor: "rgb(63, 63, 63)"
 }
 
-const Teste = () => {
-  console.log("Testando Botão")
-}
 
 function Principal() {
   return (
@@ -72,7 +69,7 @@ function Principal() {
         justifyContent="center"
         alignItems="center"
         >
-        Caso tenha interesse em cadastrar um filme
+        Caso tenha interesse em cadastrar um filme,
         clique no botão abaixo!
         <Link to='/cadastrar' style={{height:"0px"}}>
           <button  style={buttonStyle}>Cadastrar</button>
