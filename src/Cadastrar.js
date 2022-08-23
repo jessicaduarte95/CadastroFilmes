@@ -1,15 +1,14 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 function Cadastrar() {
     const containerStyle = {
-        flexDirection: "column"
+        flexDirection: "row"
     }
 
     const firstPart = {
         backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
-        width: "100%",
-        maxWidth: "initial",
+        height: "25%",
         padding: "0vh 45vh 2vh 45vh",
         display: "flex",
         alignItems:"flex-end",
@@ -21,7 +20,8 @@ function Cadastrar() {
     const secondPart = {
         backgroundColor: "#C0C0C0",
         maxWidth: "initial",
-        display: "flex"
+        display: "flex",
+        height: "75%"
     }
 
     const filmes = {
@@ -29,17 +29,38 @@ function Cadastrar() {
         backgroundColor: "white",
         height: "70%",
         width: "100%",
-        borderRadius: "0.4rem"
+        borderRadius: "0.4rem",
+        display: "flex",
+        flexDirection: "column",
+        flex: "wrap"
+    }
+
+    const title = {
+        height: "14%",
+        display: "flex",
+        alignItems: "center",
+        paddingLeft: "0.7rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontSize: '1.8rem',
+        color: "#767676",
     }
 
     return(
         <Grid container style={containerStyle}>
-            <Grid item xs={3} style={firstPart}>
+            <Grid item sm={12} style={firstPart}>
                 Bóson
             </Grid>
-            <Grid item xs={9} style={secondPart}>
-                <Grid item style={filmes}>
-                    
+            <Grid item sm={12} style={secondPart}>
+                <Grid container item sm={12} style={filmes}>
+                    <Typography style={title}>Cadastrar Filme</Typography>
+                    <label style={{height: "50px", width: "100%"}}>
+                        Nome do Filme:
+                        <input type="text" name="name" style={{height: "30px", width: "100%"}}/>
+                    </label>
+                    <label style={{height: "65px", width: "100%"}}>
+                        Descrição:
+                        <input type="text" name="name" style={{height: "30px", width: "100%"}}/>
+                    </label>
                 </Grid>
             </Grid>
         </Grid>
