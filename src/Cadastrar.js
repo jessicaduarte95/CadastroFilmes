@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Typography, TextareaAutosize } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 function Cadastrar() {
     const containerStyle = {
@@ -39,27 +40,38 @@ function Cadastrar() {
         height: "14%",
         display: "flex",
         alignItems: "center",
-        paddingLeft: "0.7rem",
+        paddingLeft: "1.5rem",
         marginBottom: "1rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1.8rem',
-        color: "#767676",
+        color: "#474747",
     }
 
     const styleData = {
         height: "15.5%", 
-        width: "90%",
-        paddingLeft: "0.7rem",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#767676"
+        color: "#5F5F5F"
     }
 
     const styleAnoCategoria = {
         height: "15.5%", 
-        width: "90%",
-        paddingLeft: "0.7rem",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#767676"
+        color: "#5F5F5F"
+    }
+
+    const styleButton = {
+        height: "30px",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: "2.5rem",
+        width: "100%"
     }
 
     return(
@@ -90,9 +102,33 @@ function Cadastrar() {
                         aria-label="maximum height"
                         placeholder="Descrição do Filme"
                         defaultValue=""
-                        style={{ width: 700, marginTop: "0.3rem" }}
+                        style={{ width: "100%", marginTop: "0.3rem" }}
                         />
                     </label>
+                    <Grid item style={styleButton}>
+                        <Link to='/filmesCadastrados' style={{height:"0px"}}>
+                            <button 
+                                style={{ height: "40px", 
+                                width: "150px", 
+                                borderRadius: "0.3rem", 
+                                borderColor: "rgb(63, 63, 63)", 
+                                backgroundColor: "rgb(63, 63, 63)", 
+                                color: 'white',
+                                fontFamily: 'Apple Chancery, cursive'}}>
+                                Filmes Cadastrados
+                            </button>
+                        </Link>
+                        <button 
+                            style={{ height: "40px", 
+                            width: "90px", 
+                            borderRadius: "0.3rem", 
+                            border: "none",
+                            backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
+                            color: 'white',
+                            fontFamily: 'Apple Chancery, cursive'}}>
+                            Cadastrar
+                        </button>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
