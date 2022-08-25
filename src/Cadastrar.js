@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Typography, TextareaAutosize } from "@mui/material";
 import { Link } from 'react-router-dom';
 
@@ -74,6 +74,21 @@ function Cadastrar() {
         width: "100%"
     }
 
+    const [values, setValues] = useState();
+    const handleChangeValues = (value) => 
+        setValues(prevValue => ({
+            ...prevValue,
+            [value.target.name]: value.target.value,
+            [value.target.year]: value.target.value,
+            [value.target.category]: value.target.value,
+            [value.target.sinopse]: value.target.value
+        }))
+    
+
+    const handleClickButton = () => {
+        console.log(values)
+    }
+
     return(
         <Grid container style={containerStyle}>
             <Grid item sm={12} style={firstPart}>
@@ -84,15 +99,15 @@ function Cadastrar() {
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
                         Título
-                        <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                        <input type="text" name="nome" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleAnoCategoria}>
                         Ano
-                        <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                        <input type="text" name="year" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleAnoCategoria}>
                         Categoria
-                        <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                        <input type="text" name="category" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleData}>
                         Sinopse
@@ -102,7 +117,9 @@ function Cadastrar() {
                         aria-label="maximum height"
                         placeholder="Descrição do Filme"
                         defaultValue=""
+                        name="sinopse"
                         style={{ width: "100%", marginTop: "0.3rem" }}
+                        onChange={handleChangeValues}
                         />
                     </label>
                     <Grid item style={styleButton}>
@@ -125,7 +142,8 @@ function Cadastrar() {
                             border: "none",
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
                             color: 'white',
-                            fontFamily: 'Apple Chancery, cursive'}}>
+                            fontFamily: 'Apple Chancery, cursive'}}
+                            onClick={() => handleClickButton()}>
                             Cadastrar
                         </button>
                     </Grid>
