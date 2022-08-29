@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Typography, TextareaAutosize } from "@mui/material";
 import { Link } from 'react-router-dom';
+import  Axios  from "axios";
 
 function Cadastrar() {
     const containerStyle = {
@@ -85,8 +86,19 @@ function Cadastrar() {
         }))
     
 
-    const handleClickButton = () => {
+    const handleClickButton = async () => {
         console.log(values)
+        await Axios.post("http://localhost:5000/cadastrar", {
+            name: values.name,
+            year: values.year,
+            category: values.category,
+            sinopse: values.sinopse
+        },
+        ).then((response) => {
+            console.log(response)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     return(
@@ -99,7 +111,7 @@ function Cadastrar() {
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
                         Título
-                        <input type="text" name="nome" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleAnoCategoria}>
                         Ano
