@@ -22,14 +22,13 @@ function Cadastrar() {
     const secondPart = {
         backgroundColor: "#C0C0C0",
         maxWidth: "initial",
-        display: "flex",
-        height: "100%"
+        display: "flex"
     }
 
     const filmes = {
-        margin: "10vh 45vh 10vh 45vh",
+        margin: "6vh 45vh 6vh 45vh",
         backgroundColor: "white",
-        height: "75%",
+        height: "63%",
         width: "100%",
         borderRadius: "0.4rem",
         display: "flex",
@@ -38,11 +37,11 @@ function Cadastrar() {
     }
 
     const title = {
-        height: "14%",
+        height: "13%",
         display: "flex",
         alignItems: "center",
         paddingLeft: "1.5rem",
-        marginBottom: "1rem",
+        marginBottom: "0.3rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1.8rem',
         color: "#474747",
