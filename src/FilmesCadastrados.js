@@ -47,21 +47,38 @@ function FilmesCadastrados() {
         color: "#474747",
     }
 
+    const teste = [
+        {titulo: "Teste Titulo", 
+        ano: "2022",
+        categoria: "Teste categoria",
+        sinopse: "Teste Sinopse"
+        },
+        {titulo: "Teste Titulo 2", 
+        ano: "2023",
+        categoria: "Teste categoria 2",
+        sinopse: "Teste Sinopse 2"
+        },
+        {titulo: "Teste Titulo 3", 
+        ano: "2021",
+        categoria: "Teste categoria 3",
+        sinopse: "Teste Sinopse 3"
+        }
+    ]
+
     return(
         <Grid container style={containerStyle}>
             <Grid item sm={12} style={firstPart}>
                 Bóson
             </Grid>
             <Grid item sm={12} style={secondPart}>
-                <Grid item sm={12} style={filmes}>
-                    <Typography style={title}>Título do Filme</Typography>
-                    <Typography style={title}>Ano de Estreia do filme</Typography>
-                    <Typography style={title}>Categoria do Filme</Typography>
-                    <Typography style={title}>Sinopse</Typography>
+                {teste.map((item, index) => 
+                <Grid item sm={12} style={filmes} key={index}>
+                    <Typography name="titulo" style={title}>{item.titulo}</Typography>
+                    <Typography name="ano" style={title}>{item.ano}</Typography>
+                    <Typography name="categoria" style={title}>{item.categoria}</Typography>
+                    <Typography name="sinopse" style={title}>{item.sinopse}</Typography>
                 </Grid>
-                <Grid container item sm={12} style={filmes}>
-                    Teste2
-                </Grid>
+                )}
             </Grid>
         </Grid>
     )
