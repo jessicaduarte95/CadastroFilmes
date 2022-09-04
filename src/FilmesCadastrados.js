@@ -87,11 +87,11 @@ function FilmesCadastrados() {
                 Bóson
             </Grid>
             <Grid item sm={12} style={secondPart}>
-                {teste.map((item, index) => 
+                {typeof dataMovies !== "undefined" && dataMovies.map((item, index) => 
                 <Grid item sm={12} style={filmes} key={index}>
-                    <Typography name="titulo" style={title}>{item.titulo}</Typography>
-                    <Typography name="ano" style={title}>{item.ano}</Typography>
-                    <Typography name="categoria" style={title}>{item.categoria}</Typography>
+                    <Typography name="title" style={title}>{item.title}</Typography>
+                    <Typography name="year" style={title}>{item.year}</Typography>
+                    <Typography name="category" style={title}>{item.category}</Typography>
                     <Typography name="sinopse" style={title}>{item.sinopse}</Typography>
                 </Grid>
                 )}
