@@ -1,5 +1,8 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
+import { useEffect } from "react";
+import Axios, * as others from 'axios';
+import { useState } from "react";
 
 function FilmesCadastrados() {
 
@@ -64,6 +67,19 @@ function FilmesCadastrados() {
         sinopse: "Teste Sinopse 3"
         }
     ]
+
+    const [dataMovies, setDataMovies] = useState();
+
+    useEffect(() => {
+        Axios.get("http://localhost:5000/filmesCadastrados")
+        .then((response) => {
+            console.log(response.data);
+            setDataMovies(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
 
     return(
         <Grid container style={containerStyle}>
