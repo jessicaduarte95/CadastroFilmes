@@ -3,6 +3,9 @@ import { Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import Axios, * as others from 'axios';
 import { useState } from "react";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import CreateIcon from '@mui/icons-material/Create';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 function FilmesCadastrados() {
 
@@ -23,50 +26,70 @@ function FilmesCadastrados() {
 
     const secondPart = {
         backgroundColor: "#C0C0C0",
-        maxWidth: "initial",
+        // maxWidth: "initial",
         display: "flex",
         paddingTop: "6vh",
-        flexDirection: "column"
+        flexDirection: "column",
+        paddingBottom: "6vh"
     }
 
     const filmes = {
         margin: "0vh 45vh 8vh 45vh",
         backgroundColor: "white",
-        height: "35%",
+        height: "52%",
         width: "60%",
         borderRadius: "0.4rem",
         direction: "column",
-        flex: "wrap"
+        flex: "wrap",
+        padding: "1.5rem"
+    }
+
+    const iconsTitle = {
+        display: "flex",
+        direction: "row",
+        justifyContent: "space-between",
+        height: "12%"
     }
 
     const title = {
-        height: "13%",
+        height: "12%",
         display: "flex",
         alignItems: "center",
-        paddingLeft: "1.5rem",
-        marginBottom: "0.3rem",
+        marginBottom: "0.6rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        fontSize: '1rem',
-        color: "#474747",
+        fontSize: '1.5rem',
+        color: "#1E1E1E"
     }
 
-    const teste = [
-        {titulo: "Teste Titulo", 
-        ano: "2022",
-        categoria: "Teste categoria",
-        sinopse: "Teste Sinopse"
-        },
-        {titulo: "Teste Titulo 2", 
-        ano: "2023",
-        categoria: "Teste categoria 2",
-        sinopse: "Teste Sinopse 2"
-        },
-        {titulo: "Teste Titulo 3", 
-        ano: "2021",
-        categoria: "Teste categoria 3",
-        sinopse: "Teste Sinopse 3"
-        }
-    ]
+    const text = {
+        height: "8%",
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "0.6rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontSize: '1rem',
+        color: "#3E3E3E"
+    }
+
+    const category = {
+        height: "8%",
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "0.6rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontSize: '1rem',
+        color: "#3E3E3E"
+    }
+
+    const sinopse = {
+        height: "40%",
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "0.6rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontSize: '1rem',
+        color: "#3E3E3E"
+    }
 
     const [dataMovies, setDataMovies] = useState();
 
@@ -89,10 +112,17 @@ function FilmesCadastrados() {
             <Grid item sm={12} style={secondPart}>
                 {typeof dataMovies !== "undefined" && dataMovies.map((item, index) => 
                 <Grid item sm={12} style={filmes} key={index}>
-                    <Typography name="title" style={title}>{item.title}</Typography>
-                    <Typography name="year" style={title}>{item.year}</Typography>
-                    <Typography name="category" style={title}>{item.category}</Typography>
-                    <Typography name="sinopse" style={title}>{item.sinopse}</Typography>
+                    <Grid style={iconsTitle}>
+                        <Typography name="title" style={title}>{item.title}</Typography>
+                        <Grid item style={{height: "20px"}}>
+                            <PictureAsPdfIcon style={{height: "20px"}}/>
+                            <CreateIcon style={{height: "20px"}}/>
+                            <DeleteOutlinedIcon style={{height: "20px"}}/>
+                        </Grid>
+                    </Grid>
+                    <Typography name="year" style={text}>{item.year}</Typography>
+                    <Typography name="category" style={category}>{item.category}</Typography>
+                    <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
                 </Grid>
                 )}
             </Grid>
