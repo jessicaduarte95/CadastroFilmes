@@ -30,7 +30,6 @@ function FilmesCadastrados() {
 
     const secondPart = {
         backgroundColor: "#C0C0C0",
-        // maxWidth: "initial",
         display: "flex",
         paddingTop: "6vh",
         flexDirection: "column",
@@ -100,9 +99,10 @@ function FilmesCadastrados() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: 410,
         bgcolor: 'background.paper',
-        border: '2px solid #000',
+        border: 'none',
+        borderRadius: "0.3rem",
         boxShadow: 24,
         p: 4,
         height: 150
@@ -159,12 +159,51 @@ function FilmesCadastrados() {
             >
                 <Fade in={openExcluir}>
                     <Box sx={styleModalExcluir}>
-                        <Typography id="transition-modal-title" variant="h6" component="h2" style={{height: "20px"}}>
-                        Text in a modal
+                        <Typography 
+                        id="transition-modal-title" 
+                        variant="h6" 
+                        component="h2" 
+                        style={{height: "20px", 
+                        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+                        fontSize: '1.5rem',
+                        color: "black"}}>
+                            Excluir Filme
                         </Typography>
-                        <Typography id="transition-modal-description" sx={{ mt: 2 }} style={{height: "30px"}}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        <Typography 
+                        id="transition-modal-description" 
+                        sx={{ mt: 2 }} 
+                        style={{height: "30px", 
+                        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+                        fontSize: '1rem',
+                        color: "#1E1E1E",
+                        paddingTop: "10px"}}>
+                            Tem certeza que deseja excluir o filme selecionado ?
                         </Typography>
+                        <Grid style={{height: "50px", marginTop: "35px"}} flexDirection="row" display="flex" justifyContent="flex-end">
+                            <button 
+                                style={{height: "40px", 
+                                width: "80px", 
+                                marginRight:"0.7rem",
+                                borderRadius: "0.3rem", 
+                                border: "none",
+                                backgroundColor: "#CDCDCD",
+                                fontFamily: 'Apple Chancery, cursive',
+                                }}
+                                
+                                onClick={handleCloseExcluir}>
+                                    Fechar
+                            </button>
+                            <button 
+                                style={{height: "40px",
+                                width: "80px",
+                                borderRadius: "0.3rem", 
+                                border: "none",
+                                backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
+                                color: 'white',
+                                fontFamily: 'Apple Chancery, cursive'}}>
+                                    Excluir
+                            </button>
+                        </Grid>
                     </Box>
                 </Fade>
             </Modal>
