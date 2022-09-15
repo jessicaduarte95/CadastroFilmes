@@ -114,11 +114,16 @@ function FilmesCadastrados() {
     const handleOpenExcluir = () => setOpenExcluir(true);
     const handleCloseExcluir = () => setOpenExcluir(false);   
 
-    const handleExcluir = (item) => {
+    const handleExcluir = async (item) => {
         console.log("Excluir Filme!");
-        // console.log(dataMovies[0].id);
-        setIdMovie(item.id)
+        setIdMovie(item.id) 
         console.log(idMovie)
+        await Axios.delete(`http://localhost:5000/deletarFilme/${idMovie}`)
+        .then((response) => {
+            console.log(response)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     useEffect(() => {
@@ -137,15 +142,18 @@ function FilmesCadastrados() {
             <Grid item sm={12} style={firstPart}>
                 Bóson
             </Grid>
+            <Grid style={{height: "20px"}}>
+                
+            </Grid>
             <Grid item sm={12} style={secondPart}>
                 {typeof dataMovies !== "undefined" && dataMovies.map((item) => 
-                <Grid item sm={12} style={filmes} key={item.id}>
+                <Grid item sm={12} style={filmes} key={item.id} id={item.id}>
                     <Grid style={iconsTitle} id={item.id}>
                         <Typography name="title" style={title}>{item.title}</Typography>
                         <Grid item style={{height: "20px"}}>
-                            <PictureAsPdfIcon style={{height: "20px"}}/>
-                            <CreateIcon style={{height: "20px"}}/>
-                            <DeleteOutlinedIcon style={{height: "20px"}} onClick={handleOpenExcluir}/>
+                            <PictureAsPdfIcon name="pdf" style={{height: "20px"}}/>
+                            <CreateIcon name="edit" style={{height: "20px"}}/>
+                            <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => handleOpenExcluir()}/>
                         </Grid>
                     </Grid>
                     <Typography name="year" style={text}>{item.year}</Typography>
@@ -183,6 +191,7 @@ function FilmesCadastrados() {
                                 color: "#1E1E1E",
                                 paddingTop: "10px"}}>
                                     Tem certeza que deseja excluir o filme selecionado ?
+                                    {item.title}
                                 </Typography>
                                 <Grid style={{height: "50px", marginTop: "35px"}} flexDirection="row" display="flex" justifyContent="flex-end">
                                     <button 
