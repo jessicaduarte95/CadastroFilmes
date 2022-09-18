@@ -6,10 +6,7 @@ import { useState } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import CreateIcon from '@mui/icons-material/Create';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Backdrop from '@mui/material/Backdrop';
+import ModalExcluir from "./ModalExcluir";
 
 function FilmesCadastrados() {
 
@@ -94,37 +91,11 @@ function FilmesCadastrados() {
         color: "#3E3E3E"
     }
 
-    const styleModalExcluir = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 410,
-        bgcolor: 'background.paper',
-        border: 'none',
-        borderRadius: "0.3rem",
-        boxShadow: 24,
-        p: 4,
-        height: 150
-      };
-
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
     const [idMovie, setIdMovie] = useState("");
     const handleOpenExcluir = () => setOpenExcluir(true);
     const handleCloseExcluir = () => setOpenExcluir(false);   
-
-    const handleExcluir = async (item) => {
-        console.log("Excluir Filme!");
-        setIdMovie(item.id) 
-        console.log(idMovie)
-        await Axios.delete(`http://localhost:5000/deletarFilme/${idMovie}`)
-        .then((response) => {
-            console.log(response)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
 
     useEffect(() => {
         Axios.get("http://localhost:5000/filmesCadastrados")
@@ -159,68 +130,14 @@ function FilmesCadastrados() {
                     <Typography name="year" style={text}>{item.year}</Typography>
                     <Typography name="category" style={category}>{item.category}</Typography>
                     <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
-                    <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    open={openExcluir}
-                    onClose={handleCloseExcluir}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                    timeout: 500,
-                    }}
-                    >
-                        <Fade in={openExcluir}>
-                            <Box sx={styleModalExcluir}>
-                                <Typography 
-                                id="transition-modal-title" 
-                                variant="h6" 
-                                component="h2" 
-                                style={{height: "20px", 
-                                fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-                                fontSize: '1.5rem',
-                                color: "black"}}>
-                                    Excluir Filme
-                                </Typography>
-                                <Typography 
-                                id="transition-modal-description" 
-                                sx={{ mt: 2 }} 
-                                style={{height: "30px", 
-                                fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-                                fontSize: '1rem',
-                                color: "#1E1E1E",
-                                paddingTop: "10px"}}>
-                                    Tem certeza que deseja excluir o filme selecionado ?
-                                    {item.title}
-                                </Typography>
-                                <Grid style={{height: "50px", marginTop: "35px"}} flexDirection="row" display="flex" justifyContent="flex-end">
-                                    <button 
-                                        style={{height: "40px", 
-                                        width: "80px", 
-                                        marginRight:"0.7rem",
-                                        borderRadius: "0.3rem", 
-                                        border: "none",
-                                        backgroundColor: "#CDCDCD",
-                                        fontFamily: 'Apple Chancery, cursive',
-                                        }}
-                                        onClick={handleCloseExcluir}>
-                                            Fechar
-                                    </button>
-                                    <button 
-                                        style={{height: "40px",
-                                        width: "80px",
-                                        borderRadius: "0.3rem", 
-                                        border: "none",
-                                        backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
-                                        color: 'white',
-                                        fontFamily: 'Apple Chancery, cursive'}}
-                                        onClick={() => {handleExcluir(item)}}>
-                                            Excluir
-                                    </button>
-                                </Grid>
-                            </Box>
-                        </Fade>
-                    </Modal>
+                    <ModalExcluir 
+                        handleCloseExcluir={handleCloseExcluir} 
+                        setIdMovie={setIdMovie}
+                        idMovie={idMovie}
+                        item={item}
+                        openExcluir={openExcluir}
+                        setOpenExcluir={setOpenExcluir}
+                    />
                 </Grid>
                 )}
             </Grid>
