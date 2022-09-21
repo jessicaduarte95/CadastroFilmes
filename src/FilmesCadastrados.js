@@ -7,6 +7,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import CreateIcon from '@mui/icons-material/Create';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import ModalExcluir from "./ModalExcluir";
+import ModalEditar from "./ModalEditar";
 
 function FilmesCadastrados() {
 
@@ -93,9 +94,12 @@ function FilmesCadastrados() {
 
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
+    const [openEditar, setOpenEditar] = useState(false);
     const [idMovie, setIdMovie] = useState("");
     const handleOpenExcluir = () => setOpenExcluir(true);
     const handleCloseExcluir = () => setOpenExcluir(false);   
+    const handleOpenEditar = () => setOpenEditar(true);
+    const handleCloseEditar = () => setOpenEditar(false);
 
     useEffect(() => {
         Axios.get("http://localhost:5000/filmesCadastrados")
@@ -123,7 +127,7 @@ function FilmesCadastrados() {
                         <Typography name="title" style={title}>{item.title}</Typography>
                         <Grid item style={{height: "20px"}}>
                             <PictureAsPdfIcon name="pdf" style={{height: "20px"}}/>
-                            <CreateIcon name="edit" style={{height: "20px"}}/>
+                            <CreateIcon name="edit" style={{height: "20px"}} onClick={() => handleOpenEditar()}/>
                             <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => handleOpenExcluir()}/>
                         </Grid>
                     </Grid>
@@ -140,6 +144,12 @@ function FilmesCadastrados() {
                     />
                 </Grid>
                 )}
+                <ModalEditar 
+                    handleCloseEditar={handleCloseEditar}
+                    openEditar={openEditar}
+                    setOpenEditar={setOpenEditar}
+                    idMovie={idMovie}
+                />
             </Grid>
         </Grid>
         
