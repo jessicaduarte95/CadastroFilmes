@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
 import { Grid, Typography, TextareaAutosize } from "@mui/material";
+import { useForm } from "react-hook-form";
+import Axios, * as others from 'axios';
 
 const style = {
     position: 'absolute',
@@ -45,34 +47,60 @@ const styleAnoCategoria = {
 
 function ModalEditar(props) {
 
+  const {register, handleSubmit, formState: { erros }} = useForm()
+
+  const onSubmit = (values) => {
+    console.log(values)
+    console.log(props.id)
+    console.log(props.title)
+    console.log(props.year)
+    console.log(props.category)
+    console.log(props.sinopse)
+  }
+
   return (
-    <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={props.openEditar}
-        onClose={props.handleCloseEditar}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-        timeout: 500,
-        }}
-      >
-        <Box>
-          <Grid container sx={style}>
-            <Grid conatiner item sm={12} style={{height: "100%"}}>
-                <Typography style={title}>Editar Filme</Typography>
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={props.openEditar}
+      onClose={props.handleCloseEditar}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+      timeout: 500,
+      }}
+    >
+      <Box>
+        <Grid container sx={style}>
+          <Grid container item sm={12} style={{height: "100%"}}>
+              <Typography style={title}>Editar Filme</Typography>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <label style={styleData}>
                         Título
-                    <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                    <input 
+                    type="text" 
+                    name="name" 
+                    defaultValue={props.title}
+                    style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
+                    {...register("name")}/>
                 </label>
                 <label style={styleAnoCategoria}>
                         Ano
-                    <input type="text" name="year" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                    <input 
+                    type="text" 
+                    name="year" 
+                    defaultValue={props.year}
+                    style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
+                    {...register("year")}/>
                 </label>
                 <label style={styleAnoCategoria}>
                     Categoria
-                    <input type="text" name="category" style={{height: "30px", width: "100%", marginTop: "0.3rem"}}/>
+                    <input 
+                    type="text" 
+                    name="category" 
+                    defaultValue={props.category}
+                    style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
+                    {...register("category")}/>
                 </label>
                 <label style={styleData}>
                     Sinopse
@@ -81,8 +109,9 @@ function ModalEditar(props) {
                     minRows={4}
                     aria-label="maximum height"
                     placeholder="Descrição do Filme"
-                    defaultValue=""
+                    defaultValue={props.sinopse}
                     name="sinopse"
+                    {...register("sinopse")}
                     style={{ width: "100%", marginTop: "0.3rem" }}
                     />
                 </label>
@@ -100,6 +129,7 @@ function ModalEditar(props) {
                             Fechar
                     </button>
                     <button 
+                        type="submit"
                         style={{height: "40px",
                         width: "80px",
                         borderRadius: "0.3rem", 
@@ -110,11 +140,11 @@ function ModalEditar(props) {
                             Salvar
                     </button>
                 </Grid>
-            </Grid>
+              </form>
           </Grid>
-        </Box>
-      </Modal>
-    </div>
+        </Grid>
+      </Box>
+    </Modal>
   );
 }
 

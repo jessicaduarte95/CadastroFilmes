@@ -142,14 +142,18 @@ function FilmesCadastrados() {
                         openExcluir={openExcluir}
                         setOpenExcluir={setOpenExcluir}
                     />
+                    <ModalEditar 
+                        handleCloseEditar={handleCloseEditar}
+                        openEditar={openEditar}
+                        setOpenEditar={setOpenEditar}
+                        id={item.id}
+                        title={item.title}
+                        year={item.year}
+                        category={item.category}
+                        sinopse={item.sinopse}
+                    />
                 </Grid>
                 )}
-                <ModalEditar 
-                    handleCloseEditar={handleCloseEditar}
-                    openEditar={openEditar}
-                    setOpenEditar={setOpenEditar}
-                    idMovie={idMovie}
-                />
             </Grid>
         </Grid>
         
