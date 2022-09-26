@@ -49,13 +49,21 @@ function ModalEditar(props) {
 
   const {register, handleSubmit, formState: { erros }} = useForm()
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     console.log(values)
     console.log(props.id)
-    console.log(props.title)
-    console.log(props.year)
-    console.log(props.category)
-    console.log(props.sinopse)
+    const id = props.id
+    await Axios.put(`http://localhost:5000/editarfilme/${id}`, {
+      name: values.name,
+      year: values.year,
+      category: values.category,
+      sinopse: values.sinopse
+    })
+    .then((response) => {
+        console.log(response)
+    }).catch((error) => {
+        console.log(error)
+    })
   }
 
   return (
