@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Typography, TextareaAutosize } from "@mui/material";
+import { Grid, Typography, TextareaAutosize} from "@mui/material";
 import { Link } from 'react-router-dom';
 import  Axios  from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { styled } from '@mui/system';
 
 function Cadastrar() {
     const containerStyle = {
@@ -74,6 +77,18 @@ function Cadastrar() {
         width: "100%"
     }
 
+    const ToastContainerStyle = styled(ToastContainer)({
+        '& .Toastify__toast-body' : {
+            height: "25px",
+        },
+        '& .Toastify__close-button' : {
+            height: "48px"
+        },
+        '& .Toastify__toast-body  > div:last-child' : {
+            height: "15px",
+        },
+      });
+
     const [values, setValues] = useState();
     const handleChangeValues = (value) => 
         setValues(prevValue => ({
@@ -83,7 +98,24 @@ function Cadastrar() {
             [value.target.category]: value.target.value,
             [value.target.sinopse]: value.target.value
         }))
-    
+
+    const notify = () => {
+        toast.success('Filme cadastrado com sucesso!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            className: "toast-message",
+            style: ({
+                height: "60px",
+                minHeight: "60px"
+                }),
+        });
+    };
 
     const handleClickButton = async () => {
         console.log(values)
@@ -106,6 +138,18 @@ function Cadastrar() {
                 Bóson
             </Grid>
             <Grid item sm={12} style={secondPart}>
+                <ToastContainerStyle
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style={{height: "60px"}}
+                />
                 <Grid container item sm={12} style={filmes}>
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
@@ -154,7 +198,7 @@ function Cadastrar() {
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
                             color: 'white',
                             fontFamily: 'Apple Chancery, cursive'}}
-                            onClick={() => handleClickButton()}>
+                            onClick={() => {handleClickButton(); notify()}}>
                             Cadastrar
                         </button>
                     </Grid>

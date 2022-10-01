@@ -25,7 +25,7 @@ function ModalExcluir(props) {
 
     const handleExcluir = async () => {
         console.log("Excluir Filme!");
-        props.setIdMovie(props.item.id) 
+        props.setIdMovie(props.id) 
         console.log(props.idMovie)
         await Axios.delete(`http://localhost:5000/deletarFilme/${props.idMovie}`)
         .then((response) => {
@@ -68,7 +68,7 @@ function ModalExcluir(props) {
                     color: "#1E1E1E",
                     paddingTop: "10px"}}>
                         Tem certeza que deseja excluir o filme selecionado ?
-                        {props.item.id}
+                        {props.id}
                     </Typography>
                     <Grid style={{height: "50px", marginTop: "35px"}} flexDirection="row" display="flex" justifyContent="flex-end">
                         <button 
@@ -91,7 +91,7 @@ function ModalExcluir(props) {
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
                             color: 'white',
                             fontFamily: 'Apple Chancery, cursive'}}
-                            onClick={() => {handleExcluir(props.item)}}>
+                            onClick={() => {handleExcluir(props.id)}}>
                                 Excluir
                         </button>
                     </Grid>
