@@ -95,7 +95,6 @@ function FilmesCadastrados() {
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
     const [openEditar, setOpenEditar] = useState(false);
-    const [idMovie, setIdMovie] = useState("");
     const handleOpenExcluir = () => setOpenExcluir(true);
     const handleCloseExcluir = () => setOpenExcluir(false);   
     const handleOpenEditar = () => setOpenEditar(true);
@@ -134,7 +133,7 @@ function FilmesCadastrados() {
                         <Grid item style={{height: "20px"}}>
                             <PictureAsPdfIcon name="pdf" style={{height: "20px"}}/>
                             <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); Teste(); setData(item)}}/>
-                            <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); Teste(); setData(item)}}/>
+                            <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); Teste(); setData(item); console.log("teste: ", item)}}/>
                             <button onClick={() => {Teste(); setData(item)}} style={{height:"20px"}}>Teste  {item.id}</button>
                         </Grid>
                     </Grid>
@@ -143,8 +142,6 @@ function FilmesCadastrados() {
                     <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
                     <ModalExcluir 
                         handleCloseExcluir={handleCloseExcluir} 
-                        setIdMovie={setIdMovie}
-                        idMovie={idMovie}
                         item={item}
                         openExcluir={openExcluir}
                         setOpenExcluir={setOpenExcluir}

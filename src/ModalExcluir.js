@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
@@ -24,10 +24,8 @@ function ModalExcluir(props) {
     };
 
     const handleExcluir = async () => {
-        console.log("Excluir Filme!");
-        props.setIdMovie(props.id) 
-        console.log(props.idMovie)
-        await Axios.delete(`http://localhost:5000/deletarFilme/${props.idMovie}`)
+        console.log("Excluir Filme!", props.id);
+        await Axios.delete(`http://localhost:5000/deletarFilme/${props.id}`)
         .then((response) => {
             console.log(response)
         }).catch((error) => {
