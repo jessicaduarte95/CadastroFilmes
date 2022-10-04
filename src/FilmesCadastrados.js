@@ -131,10 +131,9 @@ function FilmesCadastrados() {
                     <Grid style={iconsTitle} id={item.id}>
                         <Typography name="title" style={title}>{item.title}</Typography>
                         <Grid item style={{height: "20px"}}>
-                            <PictureAsPdfIcon name="pdf" style={{height: "20px"}}/>
                             <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); Teste(); setData(item)}}/>
                             <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); Teste(); setData(item); console.log("teste: ", item)}}/>
-                            <button onClick={() => {Teste(); setData(item)}} style={{height:"20px"}}>Teste  {item.id}</button>
+                            {/* <button onClick={() => {Teste(); setData(item)}} style={{height:"20px"}}>Teste  {item.id}</button> */}
                         </Grid>
                     </Grid>
                     <Typography name="year" style={text}>{item.year}</Typography>
