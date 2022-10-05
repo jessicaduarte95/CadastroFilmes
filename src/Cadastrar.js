@@ -87,7 +87,7 @@ function Cadastrar() {
         '& .Toastify__toast-body  > div:last-child' : {
             height: "15px",
         },
-      });
+    });
 
     const [values, setValues] = useState();
     const handleChangeValues = (value) => 
@@ -99,8 +99,10 @@ function Cadastrar() {
             [value.target.sinopse]: value.target.value
         }))
 
+    var text = "Filme cadastrado com sucesso!"
+
     const notify = () => {
-        toast.success('Filme cadastrado com sucesso!', {
+        toast.success(text, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
