@@ -99,7 +99,7 @@ function FilmesCadastrados() {
     const handleCloseExcluir = () => setOpenExcluir(false);   
     const handleOpenEditar = () => setOpenEditar(true);
     const handleCloseEditar = () => setOpenEditar(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState({});
 
     const Teste = () => {
         console.log("Dados Teste: ",dataMovies)
@@ -127,36 +127,34 @@ function FilmesCadastrados() {
             </Grid>
             <Grid item sm={12} style={secondPart}>
                 {typeof dataMovies !== "undefined" && dataMovies.map((item) => 
-                <Grid item sm={12} style={filmes} key={item.id} id={item.id}>
-                    <Grid style={iconsTitle} id={item.id}>
-                        <Typography name="title" style={title}>{item.title}</Typography>
-                        <Grid item style={{height: "20px"}}>
-                            <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); Teste(); setData(item)}}/>
-                            <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); Teste(); setData(item); console.log("teste: ", item)}}/>
-                            {/* <button onClick={() => {Teste(); setData(item)}} style={{height:"20px"}}>Teste  {item.id}</button> */}
-                        </Grid>
-                    </Grid>
-                    <Typography name="year" style={text}>{item.year}</Typography>
-                    <Typography name="category" style={category}>{item.category}</Typography>
-                    <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
+                <Grid item sm={12} style={filmes} key={item.id}>
                     <ModalExcluir 
                         handleCloseExcluir={handleCloseExcluir} 
                         item={item}
                         openExcluir={openExcluir}
                         setOpenExcluir={setOpenExcluir}
-                        // id={data.id}
-
+                        id={data.id}
                     />
                     <ModalEditar 
                         handleCloseEditar={handleCloseEditar}
                         openEditar={openEditar}
                         setOpenEditar={setOpenEditar}
-                        // id={data.id}
-                        // title={data.title}
-                        // year={data.year}
-                        // category={data.category}
-                        // sinopse={data.sinopse}
+                        id={data.id}
+                        title={data.title}
+                        year={data.year}
+                        category={data.category}
+                        sinopse={data.sinopse}
                     />
+                    <Grid style={iconsTitle} id={item.id}>
+                        <Typography name="title" style={title}>{item.title}</Typography>
+                        <Grid item style={{height: "20px"}}>
+                            <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); setData(item)}}/>
+                            <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); setData(item);}}/>
+                        </Grid>
+                    </Grid>
+                    <Typography name="year" style={text}>{item.year}</Typography>
+                    <Typography name="category" style={category}>{item.category}</Typography>
+                    <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
                 </Grid>
                 )}
             </Grid>
