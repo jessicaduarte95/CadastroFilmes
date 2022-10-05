@@ -5,7 +5,6 @@ import Axios, * as others from 'axios';
 import { useState } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import CreateIcon from '@mui/icons-material/Create';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import ModalExcluir from "./ModalExcluir";
 import ModalEditar from "./ModalEditar";
 
@@ -99,12 +98,7 @@ function FilmesCadastrados() {
     const handleCloseExcluir = () => setOpenExcluir(false);   
     const handleOpenEditar = () => setOpenEditar(true);
     const handleCloseEditar = () => setOpenEditar(false);
-    const [data, setData] = useState({});
-
-    const Teste = () => {
-        console.log("Dados Teste: ",dataMovies)
-        console.log("Data test: ", data)
-    }
+    const [data, setData] = useState("");
 
     useEffect(() => {
         Axios.get("http://localhost:5000/filmesCadastrados")
@@ -148,7 +142,7 @@ function FilmesCadastrados() {
                     <Grid style={iconsTitle} id={item.id}>
                         <Typography name="title" style={title}>{item.title}</Typography>
                         <Grid item style={{height: "20px"}}>
-                            <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); setData(item)}}/>
+                            <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); setData(item);}}/>
                             <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); setData(item);}}/>
                         </Grid>
                     </Grid>
