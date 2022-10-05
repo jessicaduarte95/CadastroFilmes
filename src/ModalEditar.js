@@ -46,6 +46,7 @@ const styleAnoCategoria = {
 }
 
 function ModalEditar(props) {
+  const {handleCloseEditar} = props;
 
   const {register, handleSubmit, formState: { erros }} = useForm()
 
@@ -137,6 +138,7 @@ function ModalEditar(props) {
                             Fechar
                     </button>
                     <button 
+                        onClick={() => {handleCloseEditar()}}
                         type="submit"
                         style={{height: "40px",
                         width: "80px",

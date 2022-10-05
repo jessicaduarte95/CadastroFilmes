@@ -8,6 +8,7 @@ import Axios, * as others from 'axios';
 
 
 function ModalExcluir(props) {
+    const {handleCloseExcluir} = props;
 
     const styleModalExcluir = {
         position: 'absolute',
@@ -89,7 +90,7 @@ function ModalExcluir(props) {
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
                             color: 'white',
                             fontFamily: 'Apple Chancery, cursive'}}
-                            onClick={() => {handleExcluir(props.id)}}>
+                            onClick={() => {handleExcluir(props.id); handleCloseExcluir()}}>
                                 Excluir
                         </button>
                     </Grid>
