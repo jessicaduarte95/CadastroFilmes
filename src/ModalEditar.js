@@ -54,6 +54,7 @@ function ModalEditar(props) {
     console.log(values)
     console.log(props.id)
     const id = props.id
+    handleCloseEditar()
     await Axios.put(`http://localhost:5000/editarfilme/${id}`, {
       name: values.name,
       year: values.year,
@@ -138,7 +139,6 @@ function ModalEditar(props) {
                             Fechar
                     </button>
                     <button 
-                        onClick={() => {handleCloseEditar()}}
                         type="submit"
                         style={{height: "40px",
                         width: "80px",
