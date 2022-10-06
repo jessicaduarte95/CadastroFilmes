@@ -14,7 +14,7 @@ function Cadastrar() {
     const firstPart = {
         backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
         height: "25%",
-        padding: "0vh 45vh 2vh 45vh",
+        padding: "0% 20% 2% 20%",
         display: "flex",
         alignItems:"flex-end",
         fontFamily: 'Apple Chancery, cursive',
@@ -29,7 +29,7 @@ function Cadastrar() {
     }
 
     const filmes = {
-        margin: "6vh 45vh 6vh 45vh",
+        margin: "3% 20% 3% 20%",
         backgroundColor: "white",
         height: "63%",
         width: "100%",
@@ -194,7 +194,7 @@ function Cadastrar() {
                         </Link>
                         <button 
                             style={{ height: "40px", 
-                            width: "90px", 
+                            width: "25%", 
                             borderRadius: "0.3rem", 
                             border: "none",
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
