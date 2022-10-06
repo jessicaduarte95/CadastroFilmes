@@ -29,7 +29,10 @@ function Cadastrar() {
     }
 
     const filmes = {
-        margin: "3% 20% 3% 20%",
+        marginRight: "20%",
+        marginLeft: "-40%",
+        marginTop: "3%",
+        marginBotton: "3%", 
         backgroundColor: "white",
         height: "63%",
         width: "100%",
@@ -43,7 +46,7 @@ function Cadastrar() {
         height: "13%",
         display: "flex",
         alignItems: "center",
-        paddingLeft: "1.5rem",
+        paddingLeft: "0.8rem",
         marginBottom: "0.3rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1.8rem',
@@ -52,7 +55,7 @@ function Cadastrar() {
 
     const styleData = {
         height: "15.5%", 
-        paddingLeft: "1.5rem",
+        paddingLeft: "0.8rem",
         paddingRight: "1.5rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         color: "#5F5F5F"
@@ -60,7 +63,7 @@ function Cadastrar() {
 
     const styleAnoCategoria = {
         height: "15.5%", 
-        paddingLeft: "1.5rem",
+        paddingLeft: "0.8rem",
         paddingRight: "1.5rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         color: "#5F5F5F"
@@ -68,7 +71,7 @@ function Cadastrar() {
 
     const styleButton = {
         height: "30px",
-        paddingLeft: "1.5rem",
+        paddingLeft: "0.8rem",
         paddingRight: "1.5rem",
         display: "flex",
         flexDirection: "row",
@@ -156,15 +159,15 @@ function Cadastrar() {
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
                         Título
-                        <input type="text" name="name" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input type="text" name="name" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleAnoCategoria}>
                         Ano
-                        <input type="text" name="year" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input type="text" name="year" style={{height: "30px", width: "96%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleAnoCategoria}>
                         Categoria
-                        <input type="text" name="category" style={{height: "30px", width: "100%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input type="text" name="category" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
                     </label>
                     <label style={styleData}>
                         Sinopse
@@ -175,7 +178,7 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
-                        style={{ width: "100%", marginTop: "0.3rem" }}
+                        style={{ width: "95%", marginTop: "0.3rem" }}
                         onChange={handleChangeValues}
                         />
                     </label>
