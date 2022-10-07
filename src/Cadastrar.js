@@ -53,22 +53,6 @@ function Cadastrar() {
         color: "#474747",
     }
 
-    const styleData = {
-        height: "15.5%", 
-        paddingLeft: "0.8rem",
-        paddingRight: "1.5rem",
-        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#5F5F5F"
-    }
-
-    const styleAnoCategoria = {
-        height: "15.5%", 
-        paddingLeft: "0.8rem",
-        paddingRight: "1.5rem",
-        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#5F5F5F"
-    }
-
     const styleButton = {
         height: "30px",
         paddingLeft: "0.8rem",
@@ -91,6 +75,28 @@ function Cadastrar() {
             height: "15px",
         },
     });
+
+    const StyleData = styled('label')(({theme}) => ({
+        height: "15.5%", 
+        paddingLeft: "0.8rem",
+        paddingRight: "1.5rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        color: "#5F5F5F",
+        [theme.breakpoints.down('md')]: {
+          width: "96%"
+        }
+    }))
+
+      const StyleCategoria = styled('label')(({theme}) => ({
+        height: "15.5%", 
+        paddingLeft: "0.8rem",
+        paddingRight: "1.5rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        color: "#5F5F5F",
+        [theme.breakpoints.down('md')]: {
+          width: "96%"
+        }
+    }))
 
     const [values, setValues] = useState();
     const handleChangeValues = (value) => 
@@ -157,19 +163,19 @@ function Cadastrar() {
                 />
                 <Grid container item sm={12} style={filmes}>
                     <Typography style={title}>Cadastrar Filme</Typography>
-                    <label style={styleData}>
+                    <StyleData>
                         Título
                         <input type="text" name="name" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </label>
-                    <label style={styleAnoCategoria}>
+                    </StyleData>
+                    <StyleCategoria>
                         Ano
                         <input type="text" name="year" style={{height: "30px", width: "96%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </label>
-                    <label style={styleAnoCategoria}>
+                    </StyleCategoria>
+                    <StyleCategoria>
                         Categoria
                         <input type="text" name="category" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </label>
-                    <label style={styleData}>
+                    </StyleCategoria>
+                    <StyleData>
                         Sinopse
                         <TextareaAutosize
                         maxRows={4}
@@ -181,7 +187,7 @@ function Cadastrar() {
                         style={{ width: "95%", marginTop: "0.3rem" }}
                         onChange={handleChangeValues}
                         />
-                    </label>
+                    </StyleData>
                     <Grid item style={styleButton}>
                         <Link to='/filmesCadastrados' style={{height:"0px"}}>
                             <button 
