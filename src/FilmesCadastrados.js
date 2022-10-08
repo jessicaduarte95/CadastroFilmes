@@ -7,6 +7,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import CreateIcon from '@mui/icons-material/Create';
 import ModalExcluir from "./ModalExcluir";
 import ModalEditar from "./ModalEditar";
+import { styled } from '@mui/system';
 
 function FilmesCadastrados() {
 
@@ -17,7 +18,7 @@ function FilmesCadastrados() {
     const firstPart = {
         backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
         height: "25%",
-        padding: "0vh 45vh 2vh 45vh",
+        padding: "0% 20% 2% 20%",
         display: "flex",
         alignItems:"flex-end",
         fontFamily: 'Apple Chancery, cursive',
@@ -30,11 +31,12 @@ function FilmesCadastrados() {
         display: "flex",
         paddingTop: "6vh",
         flexDirection: "column",
-        paddingBottom: "6vh"
+        paddingBottom: "6vh",
+        minHeight: "500%"
     }
 
     const filmes = {
-        margin: "0vh 45vh 8vh 45vh",
+        margin: "3% 0% 3% 20%",
         backgroundColor: "white",
         height: "52%",
         width: "60%",
@@ -48,48 +50,61 @@ function FilmesCadastrados() {
         display: "flex",
         direction: "row",
         justifyContent: "space-between",
-        height: "12%"
+        height: "8%"
     }
 
-    const title = {
-        height: "12%",
+    const TypographyStyleTitle = styled(Typography)(({theme}) => ({
+        height: "14%",
         display: "flex",
         alignItems: "center",
         marginBottom: "0.6rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1.5rem',
-        color: "#1E1E1E"
-    }
+        color: "#1E1E1E",
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1.2rem',
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '0.9rem',
+            fontWeight: "bold"
+        }
+    }))
 
-    const text = {
-        height: "8%",
+    const TypographyStyleCategory = styled(Typography)(({theme}) => ({
+        height: "5%",
         display: "flex",
         alignItems: "center",
         marginBottom: "0.6rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1rem',
-        color: "#3E3E3E"
-    }
+        color: "#3E3E3E",
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.9rem',
+        }
+    }))
 
-    const category = {
-        height: "8%",
+    const TypographyStyleSinopse = styled(Typography)(({theme}) => ({
+        height: "40px",
         display: "flex",
-        alignItems: "center",
         marginBottom: "0.6rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1rem',
-        color: "#3E3E3E"
-    }
+        color: "#3E3E3E",
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.9rem',
+        }
+    }))
 
-    const sinopse = {
-        height: "40%",
-        display: "flex",
-        alignItems: "center",
+    const TypographyStyleYear = styled(Typography)(({theme}) => ({
+        height: "1.5rem",
         marginBottom: "0.6rem",
         fontFamily: 'Comic Sans MS, Comic Sans, cursive',
         fontSize: '1rem',
-        color: "#3E3E3E"
-    }
+        color: "#3E3E3E",
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.9rem',
+        }
+    }))
 
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
@@ -116,9 +131,6 @@ function FilmesCadastrados() {
             <Grid item sm={12} style={firstPart}>
                 Bóson
             </Grid>
-            <Grid style={{height: "20px"}}>
-                
-            </Grid>
             <Grid item sm={12} style={secondPart}>
                 {typeof dataMovies !== "undefined" && dataMovies.map((item) => 
                 <Grid item sm={12} style={filmes} key={item.id}>
@@ -140,15 +152,15 @@ function FilmesCadastrados() {
                         sinopse={data.sinopse}
                     />
                     <Grid style={iconsTitle} id={item.id}>
-                        <Typography name="title" style={title}>{item.title}</Typography>
-                        <Grid item style={{height: "20px"}}>
+                        <TypographyStyleTitle name="title">{item.title}</TypographyStyleTitle>
+                        <Grid item style={{height: "20px", display: "flex", justifyContent: "flex-end", width: "7rem"}}>
                             <CreateIcon name="edit" style={{height: "20px"}} onClick={() => {handleOpenEditar(); setData(item);}}/>
                             <DeleteOutlinedIcon name="delete" style={{height: "20px"}} onClick={() => {handleOpenExcluir(); setData(item);}}/>
                         </Grid>
                     </Grid>
-                    <Typography name="year" style={text}>{item.year}</Typography>
-                    <Typography name="category" style={category}>{item.category}</Typography>
-                    <Typography name="sinopse" style={sinopse}>{item.sinopse}</Typography>
+                    <TypographyStyleYear name="year">{item.year}</TypographyStyleYear>
+                    <TypographyStyleCategory name="category">{item.category}</TypographyStyleCategory>
+                    <TypographyStyleSinopse name="sinopse">{item.sinopse}</TypographyStyleSinopse>
                 </Grid>
                 )}
             </Grid>
