@@ -5,6 +5,7 @@ import  Axios  from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { styled } from '@mui/system';
+import { useForm } from "react-hook-form";
 
 function Cadastrar() {
     const containerStyle = {
@@ -93,15 +94,7 @@ function Cadastrar() {
         },
     });
 
-    const [values, setValues] = useState();
-    const handleChangeValues = (value) => 
-        setValues(prevValue => ({
-            ...prevValue,
-            [value.target.name]: value.target.value,
-            [value.target.year]: value.target.value,
-            [value.target.category]: value.target.value,
-            [value.target.sinopse]: value.target.value
-        }))
+    const {reset, register, handleSubmit, formState: { erros }} = useForm()
 
     var text = "Filme cadastrado com sucesso!"
 
@@ -123,19 +116,21 @@ function Cadastrar() {
         });
     };
 
-    const handleClickButton = async () => {
+    const onSubmit = async (values) => {
+        notify()
         console.log(values)
         await Axios.post("http://localhost:5000/cadastrar", {
             name: values.name,
             year: values.year,
             category: values.category,
             sinopse: values.sinopse
-        },
+        }
         ).then((response) => {
             console.log(response)
         }).catch((error) => {
             console.log(error)
         })
+        reset()
     }
 
     return(
@@ -156,19 +151,34 @@ function Cadastrar() {
                 pauseOnHover
                 style={{height: "60px"}}
                 />
-                <Grid container item sm={12} style={filmes}>
+                <form onSubmit={handleSubmit(onSubmit)} container item sm={12} style={filmes}>
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
                         Título
-                        <input type="text" name="name" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input 
+                        type="text" 
+                        name="name" 
+                        defaultValue=""
+                        style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
+                        {...register("name")}/>
                     </label>
                     <label style={styleCategoria}>
                         <p style={{height: "20px"}}>Ano</p>
-                        <input type="text" name="year" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input 
+                        type="text" 
+                        name="year" 
+                        defaultValue=""
+                        style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
+                        {...register("year")}/>
                     </label>
                     <label style={styleCategoria}>
                         Categoria
-                        <input type="text" name="category" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                        <input 
+                        type="text" 
+                        name="category" 
+                        defaultValue=""
+                        style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
+                        {...register("category")}/>
                     </label>
                     <label style={styleData}>
                         Sinopse
@@ -179,8 +189,8 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
+                        {...register("sinopse")}
                         style={{ width: "94.2%", marginTop: "0.3rem" }}
-                        onChange={handleChangeValues}
                         />
                     </label>
                     <Grid item style={styleButton}>
@@ -197,6 +207,7 @@ function Cadastrar() {
                             </button>
                         </Link>
                         <button 
+                            type="submit"
                             style={{ height: "40px", 
                             width: "90px", 
                             borderRadius: "0.3rem", 
@@ -204,11 +215,11 @@ function Cadastrar() {
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
                             color: 'white',
                             fontFamily: 'Apple Chancery, cursive'}}
-                            onClick={() => {handleClickButton(); notify()}}>
+                            >
                             Cadastrar
                         </button>
                     </Grid>
-                </Grid>
+                </form>
             </Grid>
         </Grid>
     )
