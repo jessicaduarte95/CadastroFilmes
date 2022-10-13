@@ -56,7 +56,7 @@ function Cadastrar() {
     const styleButton = {
         height: "30px",
         paddingLeft: "0.8rem",
-        paddingRight: "1.5rem",
+        paddingRight: "1.0rem",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -64,39 +64,34 @@ function Cadastrar() {
         width: "100%"
     }
 
+    const styleData = {
+        height: "15.5%", 
+        paddingLeft: "0.8rem",
+        paddingRight: "1.5rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        color: "#5F5F5F"
+    }
+
+    const styleCategoria = {
+        height: "15.5%", 
+        paddingLeft: "0.8rem",
+        paddingRight: "1.5rem",
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        color: "#5F5F5F",
+    }
+
     const ToastContainerStyle = styled(ToastContainer)({
         '& .Toastify__toast-body' : {
             height: "25px",
         },
         '& .Toastify__close-button' : {
-            height: "48px"
+            height: "48px",
+            width: "15px"
         },
         '& .Toastify__toast-body  > div:last-child' : {
             height: "15px",
         },
     });
-
-    const StyleData = styled('label')(({theme}) => ({
-        height: "15.5%", 
-        paddingLeft: "0.8rem",
-        paddingRight: "1.5rem",
-        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#5F5F5F",
-        [theme.breakpoints.down('md')]: {
-          width: "96%"
-        }
-    }))
-
-      const StyleCategoria = styled('label')(({theme}) => ({
-        height: "15.5%", 
-        paddingLeft: "0.8rem",
-        paddingRight: "1.5rem",
-        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
-        color: "#5F5F5F",
-        [theme.breakpoints.down('md')]: {
-          width: "96%"
-        }
-    }))
 
     const [values, setValues] = useState();
     const handleChangeValues = (value) => 
@@ -163,19 +158,19 @@ function Cadastrar() {
                 />
                 <Grid container item sm={12} style={filmes}>
                     <Typography style={title}>Cadastrar Filme</Typography>
-                    <StyleData>
+                    <label style={styleData}>
                         Título
-                        <input type="text" name="name" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </StyleData>
-                    <StyleCategoria>
-                        Ano
-                        <input type="text" name="year" style={{height: "30px", width: "96%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </StyleCategoria>
-                    <StyleCategoria>
+                        <input type="text" name="name" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                    </label>
+                    <label style={styleCategoria}>
+                        <p style={{height: "20px"}}>Ano</p>
+                        <input type="text" name="year" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                    </label>
+                    <label style={styleCategoria}>
                         Categoria
-                        <input type="text" name="category" style={{height: "30px", width: "95%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
-                    </StyleCategoria>
-                    <StyleData>
+                        <input type="text" name="category" style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}} onChange={handleChangeValues}/>
+                    </label>
+                    <label style={styleData}>
                         Sinopse
                         <TextareaAutosize
                         maxRows={4}
@@ -184,15 +179,15 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
-                        style={{ width: "95%", marginTop: "0.3rem" }}
+                        style={{ width: "94.2%", marginTop: "0.3rem" }}
                         onChange={handleChangeValues}
                         />
-                    </StyleData>
+                    </label>
                     <Grid item style={styleButton}>
                         <Link to='/filmesCadastrados' style={{height:"0px"}}>
                             <button 
                                 style={{ height: "40px", 
-                                width: "150px", 
+                                width: "130px", 
                                 borderRadius: "0.3rem", 
                                 borderColor: "rgb(63, 63, 63)", 
                                 backgroundColor: "rgb(63, 63, 63)", 
@@ -203,7 +198,7 @@ function Cadastrar() {
                         </Link>
                         <button 
                             style={{ height: "40px", 
-                            width: "25%", 
+                            width: "90px", 
                             borderRadius: "0.3rem", 
                             border: "none",
                             backgroundImage: "linear-gradient(90deg, #800080 0%, #C71585 100%)",
