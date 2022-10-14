@@ -185,7 +185,8 @@ function Cadastrar() {
                     <label style={styleCategoria}>
                         <p style={{height: "20px"}}>Ano</p>
                         <input 
-                        type="text" 
+                        type="number"
+                        min="0" 
                         name="year" 
                         defaultValue=""
                         required
@@ -211,6 +212,7 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
+                        MAXLENGTH="300"
                         required
                         {...register("sinopse")}
                         style={{ width: "94.2%", marginTop: "0.3rem" }}
