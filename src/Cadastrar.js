@@ -96,6 +96,12 @@ function Cadastrar() {
         },
     });
 
+    const CircularProgressStyle = styled(CircularProgress)({
+        '& .css-1idz92c-MuiCircularProgress-svg' : {
+            height: "25px",
+        }
+    });
+
     const {reset, register, handleSubmit, formState: { erros }} = useForm();
     const [loading, setLoading] = useState(false);
 
@@ -141,7 +147,7 @@ function Cadastrar() {
     if(loading == true) {
         return (
             <Box sx={{ display: 'flex', height: "30px" }}>
-              <CircularProgress style={{ height: "30px"}}/>
+              <CircularProgressStyle/>
             </Box>
           );
     }
@@ -172,6 +178,7 @@ function Cadastrar() {
                         type="text" 
                         name="name" 
                         defaultValue=""
+                        required
                         style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
                         {...register("name")}/>
                     </label>
@@ -181,6 +188,7 @@ function Cadastrar() {
                         type="text" 
                         name="year" 
                         defaultValue=""
+                        required
                         style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
                         {...register("year")}/>
                     </label>
@@ -190,6 +198,7 @@ function Cadastrar() {
                         type="text" 
                         name="category" 
                         defaultValue=""
+                        required
                         style={{height: "30px", width: "94.2%", marginTop: "0.3rem"}}
                         {...register("category")}/>
                     </label>
@@ -202,6 +211,7 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
+                        required
                         {...register("sinopse")}
                         style={{ width: "94.2%", marginTop: "0.3rem" }}
                         />
