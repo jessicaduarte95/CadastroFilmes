@@ -32,18 +32,7 @@ function FilmesCadastrados() {
         paddingTop: "6vh",
         flexDirection: "column",
         paddingBottom: "6vh",
-        minHeight: "500%"
-    }
-
-    const filmes = {
-        margin: "3% 0% 3% 20%",
-        backgroundColor: "white",
-        height: "52%",
-        width: "60%",
-        borderRadius: "0.4rem",
-        direction: "column",
-        flex: "wrap",
-        padding: "1.5rem"
+        minHeight: "200%"
     }
 
     const iconsTitle = {
@@ -106,6 +95,23 @@ function FilmesCadastrados() {
         }
     }))
 
+    const GridPrincipalStyle = styled(Grid)(({theme}) => ({
+        margin: "3% 0% 3% 20%",
+        backgroundColor: "white",
+        maxHeight: "14rem",
+        width: "60%",
+        borderRadius: "0.4rem",
+        direction: "column",
+        flex: "wrap",
+        padding: "1.5rem",
+        [theme.breakpoints.down('md')]: {
+            maxHeight: '18rem',
+        },
+        [theme.breakpoints.down('sm')]: {
+            maxHeight: '22rem',
+        }
+    }));
+
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
     const [openEditar, setOpenEditar] = useState(false);
@@ -133,7 +139,7 @@ function FilmesCadastrados() {
             </Grid>
             <Grid item sm={12} style={secondPart}>
                 {typeof dataMovies !== "undefined" && dataMovies.map((item) => 
-                <Grid item sm={12} style={filmes} key={item.id}>
+                <GridPrincipalStyle item sm={12} key={item.id}>
                     <ModalExcluir 
                         handleCloseExcluir={handleCloseExcluir} 
                         item={item}
@@ -161,7 +167,7 @@ function FilmesCadastrados() {
                     <TypographyStyleYear name="year">{item.year}</TypographyStyleYear>
                     <TypographyStyleCategory name="category">{item.category}</TypographyStyleCategory>
                     <TypographyStyleSinopse name="sinopse">{item.sinopse}</TypographyStyleSinopse>
-                </Grid>
+                </GridPrincipalStyle>
                 )}
             </Grid>
         </Grid>

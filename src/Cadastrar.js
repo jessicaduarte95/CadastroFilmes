@@ -212,7 +212,7 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
-                        MAXLENGTH="300"
+                        MAXLENGTH="280"
                         required
                         {...register("sinopse")}
                         style={{ width: "94.2%", marginTop: "0.3rem" }}
