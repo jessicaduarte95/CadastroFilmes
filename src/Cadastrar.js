@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { styled } from '@mui/system';
 import { useForm } from "react-hook-form";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function Cadastrar() {
     const containerStyle = {
@@ -94,7 +96,8 @@ function Cadastrar() {
         },
     });
 
-    const {reset, register, handleSubmit, formState: { erros }} = useForm()
+    const {reset, register, handleSubmit, formState: { erros }} = useForm();
+    const [loading, setLoading] = useState(false);
 
     var text = "Filme cadastrado com sucesso!"
 
@@ -117,8 +120,8 @@ function Cadastrar() {
     };
 
     const onSubmit = async (values) => {
-        notify()
-        console.log(values)
+        setLoading(true)
+        console.log("Values: ",values)
         await Axios.post("http://localhost:5000/cadastrar", {
             name: values.name,
             year: values.year,
@@ -131,6 +134,16 @@ function Cadastrar() {
             console.log(error)
         })
         reset()
+        setLoading(false)
+        notify()
+    }
+
+    if(loading == true) {
+        return (
+            <Box sx={{ display: 'flex', height: "30px" }}>
+              <CircularProgress style={{ height: "30px"}}/>
+            </Box>
+          );
     }
 
     return(
