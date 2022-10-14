@@ -127,7 +127,7 @@ function ModalEditar(props) {
                     placeholder="Descrição do Filme"
                     defaultValue={props.sinopse}
                     name="sinopse"
-                    MAXLENGTH="280"
+                    maxLength="280"
                     {...register("sinopse")}
                     style={{ width: "100%", marginTop: "0.3rem" }}
                     />

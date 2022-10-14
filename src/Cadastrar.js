@@ -170,7 +170,7 @@ function Cadastrar() {
                 pauseOnHover
                 style={{height: "60px"}}
                 />
-                <form onSubmit={handleSubmit(onSubmit)} container item sm={12} style={filmes}>
+                <form onSubmit={handleSubmit(onSubmit)} sm={12} style={filmes}>
                     <Typography style={title}>Cadastrar Filme</Typography>
                     <label style={styleData}>
                         Título
@@ -212,7 +212,7 @@ function Cadastrar() {
                         placeholder="Descrição do Filme"
                         defaultValue=""
                         name="sinopse"
-                        MAXLENGTH="280"
+                        maxLength="280"
                         required
                         {...register("sinopse")}
                         style={{ width: "94.2%", marginTop: "0.3rem" }}
