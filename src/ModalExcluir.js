@@ -8,7 +8,7 @@ import Axios, * as others from 'axios';
 
 
 function ModalExcluir(props) {
-    const {handleCloseExcluir} = props;
+    const {handleCloseExcluir, setDataMovies} = props;
 
     const styleModalExcluir = {
         position: 'absolute',
@@ -29,6 +29,8 @@ function ModalExcluir(props) {
         await Axios.delete(`http://localhost:5000/deletarFilme/${props.id}`)
         .then((response) => {
             console.log(response)
+            const dados = response.data
+            setDataMovies(dados)
         }).catch((error) => {
             console.log(error)
         })

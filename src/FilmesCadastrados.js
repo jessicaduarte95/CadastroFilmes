@@ -146,6 +146,7 @@ function FilmesCadastrados() {
                         openExcluir={openExcluir}
                         setOpenExcluir={setOpenExcluir}
                         id={data.id}
+                        setDataMovies={setDataMovies}
                     />
                     <ModalEditar 
                         handleCloseEditar={handleCloseEditar}
