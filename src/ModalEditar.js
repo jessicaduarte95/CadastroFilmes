@@ -92,6 +92,7 @@ function ModalEditar(props) {
                     <input 
                     type="text" 
                     name="name" 
+                    required
                     defaultValue={props.title}
                     style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
                     {...register("name")}/>
@@ -99,8 +100,9 @@ function ModalEditar(props) {
                 <label style={styleAnoCategoria}>
                         Ano
                     <input 
-                    type="text" 
-                    name="year" 
+                    type="number" 
+                    name="year"
+                    required 
                     defaultValue={props.year}
                     style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
                     {...register("year")}/>
@@ -110,6 +112,7 @@ function ModalEditar(props) {
                     <input 
                     type="text" 
                     name="category" 
+                    required
                     defaultValue={props.category}
                     style={{height: "30px", width: "100%", marginTop: "0.3rem"}} 
                     {...register("category")}/>
@@ -119,10 +122,12 @@ function ModalEditar(props) {
                     <TextareaAutosize
                     maxRows={4}
                     minRows={4}
+                    required
                     aria-label="maximum height"
                     placeholder="Descrição do Filme"
                     defaultValue={props.sinopse}
                     name="sinopse"
+                    MAXLENGTH="280"
                     {...register("sinopse")}
                     style={{ width: "100%", marginTop: "0.3rem" }}
                     />
