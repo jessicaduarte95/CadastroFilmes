@@ -156,6 +156,7 @@ function FilmesCadastrados() {
                         year={data.year}
                         category={data.category}
                         sinopse={data.sinopse}
+                        setDataMovies={setDataMovies}
                     />
                     <Grid style={iconsTitle} id={item.id}>
                         <TypographyStyleTitle name="title">{item.title}</TypographyStyleTitle>

@@ -46,7 +46,7 @@ const styleAnoCategoria = {
 }
 
 function ModalEditar(props) {
-  const {handleCloseEditar} = props;
+  const {handleCloseEditar, setDataMovies} = props;
 
   const {register, handleSubmit, formState: { erros }} = useForm()
 
@@ -63,6 +63,8 @@ function ModalEditar(props) {
     })
     .then((response) => {
         console.log(response)
+        const dados = response.data
+        setDataMovies(dados)
     }).catch((error) => {
         console.log(error)
     })
