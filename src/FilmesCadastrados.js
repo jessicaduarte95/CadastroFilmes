@@ -8,6 +8,8 @@ import CreateIcon from '@mui/icons-material/Create';
 import ModalExcluir from "./ModalExcluir";
 import ModalEditar from "./ModalEditar";
 import { styled } from '@mui/system';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FilmesCadastrados() {
 
@@ -109,6 +111,19 @@ function FilmesCadastrados() {
         }
     }));
 
+    const ToastContainerStyle = styled(ToastContainer)({
+        '& .Toastify__toast-body' : {
+            height: "25px",
+        },
+        '& .Toastify__close-button' : {
+            height: "48px",
+            width: "15px"
+        },
+        '& .Toastify__toast-body  > div:last-child' : {
+            height: "15px",
+        },
+    });
+
     const [dataMovies, setDataMovies] = useState();
     const [openExcluir, setOpenExcluir] = useState(false);
     const [openEditar, setOpenEditar] = useState(false);
@@ -117,6 +132,42 @@ function FilmesCadastrados() {
     const handleOpenEditar = () => setOpenEditar(true);
     const handleCloseEditar = () => setOpenEditar(false);
     const [data, setData] = useState("");
+
+    const notifyEdit = () => {
+        toast.success("Filme editado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            className: "toast-message",
+            style: ({
+                height: "60px",
+                minHeight: "60px"
+                }),
+        });
+    };
+
+    const notifyDelete = () => {
+        toast.success("Filme excluído com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            className: "toast-message",
+            style: ({
+                height: "60px",
+                minHeight: "60px"
+                }),
+        });
+    };
 
     useEffect(() => {
         Axios.get("http://localhost:5000/filmesCadastrados")
@@ -144,6 +195,7 @@ function FilmesCadastrados() {
                         setOpenExcluir={setOpenExcluir}
                         id={data.id}
                         setDataMovies={setDataMovies}
+                        notifyDelete={notifyDelete}
                     />
                     <ModalEditar 
                         handleCloseEditar={handleCloseEditar}
@@ -155,6 +207,7 @@ function FilmesCadastrados() {
                         category={data.category}
                         sinopse={data.sinopse}
                         setDataMovies={setDataMovies}
+                        notifyEdit={notifyEdit}
                     />
                     <Grid style={iconsTitle} id={item.id}>
                         <TypographyStyleTitle name="title">{item.title}</TypographyStyleTitle>
@@ -166,8 +219,21 @@ function FilmesCadastrados() {
                     <TypographyStyleYear name="year">{item.year}</TypographyStyleYear>
                     <TypographyStyleCategory name="category">{item.category}</TypographyStyleCategory>
                     <TypographyStyleSinopse name="sinopse">{item.sinopse}</TypographyStyleSinopse>
+                    {/* <button style={{height: "40px", width: "50px"}} onClick={() => notifyDelete()}>Teste</button> */}
                 </GridPrincipalStyle>
                 )}
+                <ToastContainerStyle
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style={{height: "60px"}}
+                />
             </Grid>
         </Grid>
         
