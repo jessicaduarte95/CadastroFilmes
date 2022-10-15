@@ -32,7 +32,7 @@ function FilmesCadastrados() {
         paddingTop: "6vh",
         flexDirection: "column",
         paddingBottom: "6vh",
-        height: "auto"
+        height: "initial"
     }
 
     const iconsTitle = {
@@ -81,6 +81,7 @@ function FilmesCadastrados() {
         color: "#3E3E3E",
         [theme.breakpoints.down('md')]: {
             fontSize: '0.9rem',
+            height: "80px"
         }
     }))
 
@@ -98,17 +99,13 @@ function FilmesCadastrados() {
     const GridPrincipalStyle = styled(Grid)(({theme}) => ({
         margin: "3% 0% 3% 20%",
         backgroundColor: "white",
-        maxHeight: "14rem",
         width: "60%",
         borderRadius: "0.4rem",
         direction: "column",
         flex: "wrap",
         padding: "1.5rem",
         [theme.breakpoints.down('md')]: {
-            maxHeight: '18rem',
-        },
-        [theme.breakpoints.down('sm')]: {
-            maxHeight: '22rem',
+            height: '23rem',
         }
     }));
 
