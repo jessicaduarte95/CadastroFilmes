@@ -32,7 +32,7 @@ function FilmesCadastrados() {
         paddingTop: "6vh",
         flexDirection: "column",
         paddingBottom: "6vh",
-        minHeight: "200%"
+        height: "auto"
     }
 
     const iconsTitle = {
