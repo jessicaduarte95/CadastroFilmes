@@ -15,7 +15,7 @@ function ModalExcluir(props) {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 410,
+        width: 330,
         bgcolor: 'background.paper',
         border: 'none',
         borderRadius: "0.3rem",
@@ -69,7 +69,6 @@ function ModalExcluir(props) {
                     color: "#1E1E1E",
                     paddingTop: "10px"}}>
                         Tem certeza que deseja excluir o filme selecionado ?
-                        {props.id}
                     </Typography>
                     <Grid style={{height: "50px", marginTop: "35px"}} flexDirection="row" display="flex" justifyContent="flex-end">
                         <button 
