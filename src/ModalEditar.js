@@ -17,7 +17,7 @@ const style = {
     borderRadius: "0.3rem",
     boxShadow: 24,
     p: 4,
-    height: "70%",
+    height: 450,
     paddingTop: "1.6rem"
 };
 
