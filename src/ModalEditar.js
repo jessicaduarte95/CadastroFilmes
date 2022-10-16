@@ -11,13 +11,13 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 700,
+    width: "55%",
     bgcolor: 'background.paper',
     border: 'none',
     borderRadius: "0.3rem",
     boxShadow: 24,
     p: 4,
-    height: 450,
+    height: "70%",
     paddingTop: "1.6rem"
 };
 
